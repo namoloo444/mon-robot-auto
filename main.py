@@ -6,7 +6,7 @@ from threading import Thread
 
 # --- CONFIGURATION ---
 # Remplace par l'URL qui finit par /autofaucet/ si possible
-URL_FIRE = "https://firefaucet.win"
+URL_FIRE = "https://firefaucet.win/start"
 
 app = Flask('')
 

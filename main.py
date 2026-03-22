@@ -5,24 +5,28 @@ from flask import Flask
 from threading import Thread
 
 # --- CONFIGURATION ---
-# Assure-toi de mettre l'URL COMPLETE entre les guillemets
-URL_FIRE = "https://firefaucet.win/start"
+# Remplace par l'URL qui finit par /autofaucet/ si possible
+URL_FIRE = "https://firefaucet.win"
 
 app = Flask('')
 
 @app.route('/')
 def home():
-    return "Robot en cours de fonctionnement..."
+    return "Robot de Namolo en cours..."
 
 def run_faucet():
-    headers = {"User-Agent": "Mozilla/5.0 (Linux; Android 10; Infinix)"}
+    # C'EST ICI QUE TU DOIS COLLER TON COOKIE
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Linux; Android 10; Infinix)",
+        "Cookie": "_ga=GA1.1.507508636.1774193934; _ga_62J3KC448K=GS2.1.s1774198477$o2$g1$t1774199588$j60$10$h0"
+    }
     print("[*] Robot de gain 24h/24 : LANCE")
     while True:
         try:
             r = requests.get(URL_FIRE, headers=headers, timeout=30)
-            print(f"[+] {time.strftime('%H:%M')} - Gain validé sur FaucetPay !")
+            print(f"[+] {time.strftime('%H:%M')} - Gain validé !")
         except:
-            print("[!] Erreur de connexion au site")
+            print("[!] Erreur de connexion")
         time.sleep(125)
 
 def run():
@@ -30,8 +34,7 @@ def run():
     app.run(host='0.0.0.0', port=port)
 
 if __name__ == "__main__":
-    # Lance le faucet dans un fil séparé
     t = Thread(target=run_faucet)
     t.start()
-    # Lance le serveur web pour que Render soit content
     run()
+

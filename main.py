@@ -5,9 +5,9 @@ from flask import Flask
 from threading import Thread
 
 # --- CONFIGURATION NAMOLO ---
-URL_FIRE = "https://firefaucet.win/start"
+URL_FIRE = "https://firefaucet.win/autofaucet/"
 # COLLE TON COOKIE ENTIER ICI ENTRE LES GUILLEMETS
-MON_COOKIE = "_ga=GA1.1.507508636.1774193934; _ga_62J3KC448K=GS2.1.s1774198477$o2$g1$t1774199588$j60$10$h0"
+MON_COOKIE = '_ga=GA1.1.507508636.1774193934; _ga_62J3KC448K=GS2.1.s1774198477$o2$g1$t1774199588$j60$10$h0'
 
 app = Flask('')
 @app.route('/')
@@ -15,7 +15,7 @@ def home(): return "Robot Namolo Turbo 62s en ligne"
 
 def run_faucet():
     headers = {
-        "User-Agent": "Mozilla/5.0 (Linux; Android 10; Infinix)",
+        "User-Agent": "Mozilla/5.0 (Linux; Android 10; Infinix)"
         "Cookie": MON_COOKIE
     }
     print("[*] Robot TURBO lancé : Utilisation des ACP en cours...")

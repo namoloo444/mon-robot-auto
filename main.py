@@ -15,7 +15,7 @@ def home(): return "Robot Namolo Turbo 62s en ligne"
 
 def run_faucet():
     headers = {
-        "User-Agent": "Mozilla/5.0 (Linux; Android 10; Infinix)"
+        "User-Agent": "Mozilla/5.0 (Linux; Android 10; Infinix)",
         "Cookie": MON_COOKIE
     }
     print("[*] Robot TURBO lancé : Utilisation des ACP en cours...")

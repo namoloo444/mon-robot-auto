@@ -1,0 +1,14 @@
+name: Robot Forceur Namolo
+on:
+  schedule:
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
+
+jobs:
+  gain:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Execution du script
+        run: |
+          curl -H "User-Agent: Mozilla/5.0 (Linux; Android 10; Infinix)" -H "Cookie: _ga=GA1.1.507508636.1774193934; _ga_62J3KC448K=GS2.1.s1774198477$o2$g1$t1774199588$j60$10$h0" https://firefaucet.win/start 
+          echo "Gain forcé avec succès !"

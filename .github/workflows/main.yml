@@ -1,14 +1,18 @@
-name: Robot Forceur Namolo
+name: Fire_Faucet_Elite_Turbo
 on:
   schedule:
-    - cron: '*/5 * * * *'
+    - cron: '*/5 * * * *' # S'exécute TOUTES LES 5 MINUTES
   workflow_dispatch:
 
 jobs:
-  gain:
+  collect:
     runs-on: ubuntu-latest
     steps:
-      - name: Execution du script
+      - name: Connexion Furtive Infinix
         run: |
-          curl -H "User-Agent: Mozilla/5.0 (Linux; Android 10; Infinix)" -H "Cookie: _ga=GA1.1.507508636.1774193934; _ga_62J3KC448K=GS2.1.s1774198477$o2$g1$t1774199588$j60$10$h0" https://firefaucet.win/start 
-          echo "Gain forcé avec succès !"
+          curl -s -X POST "https://firefaucet.win" \
+          -H "Cookie: ${{ secrets.FIRE_COOKIE }}" \
+          -H "User-Agent: Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Mobile Safari/537.36" \
+          -H "Referer: https://firefaucet.win/" \
+          -H "X-Requested-With: XMLHttpRequest"
+          echo "Points Fire Faucet envoyes avec succes !"

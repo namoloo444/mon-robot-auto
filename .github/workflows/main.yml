@@ -1,18 +1,30 @@
-name: Fire_Faucet_Elite_Turbo
+name: Fire_Faucet_Elite_Rank_100_Turbo
 on:
   schedule:
-    - cron: '*/5 * * * *' # S'exécute TOUTES LES 5 MINUTES
+    - cron: '*/5 * * * *' # Relance une session de 5 minutes sans interruption
   workflow_dispatch:
 
 jobs:
-  collect:
+  session_active:
     runs-on: ubuntu-latest
     steps:
-      - name: Connexion Furtive Infinix
+      - name: Maintien de Session Minute par Minute
         run: |
-          curl -s -X POST "https://firefaucet.win" \
-          -H "Cookie: ${{ secrets.FIRE_COOKIE }}" \
-          -H "User-Agent: Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Mobile Safari/537.36" \
-          -H "Referer: https://firefaucet.win/" \
-          -H "X-Requested-With: XMLHttpRequest"
-          echo "Points Fire Faucet envoyes avec succes !"
+          echo "Ouverture de la session Auto-Faucet..."
+          
+          # Boucle pour rester en ligne 5 minutes et gagner 5 points d'activité
+          for i in {1..5}
+          do
+            echo "Minute $((i))/5 : Maintien de la session actif..."
+            
+            curl -s -X POST "https://firefaucet.win/start" \
+            -H "Cookie: ${{ secrets.FIRE_COOKIE }}" \
+            -H "User-Agent: Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Mobile Safari/537.36" \
+            -H "Referer: https://firefaucet.win/start/" \
+            -H "X-Requested-With: XMLHttpRequest"
+            
+            # Attente de 60 secondes pour valider la minute de présence
+            sleep 60
+          done
+          
+          echo "Session de 5 minutes validée. Relance automatique dans quelques secondes..."

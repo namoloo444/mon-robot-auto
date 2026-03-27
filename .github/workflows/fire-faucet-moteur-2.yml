@@ -1,0 +1,20 @@
+name: Fire_Faucet_Moteur_2_Elite
+on:
+  schedule:
+    - cron: '*/5 * * * *' # Tourne toutes les 5 minutes
+  workflow_dispatch:
+
+jobs:
+  gain_intensif:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Presence Minute par Minute
+        run: |
+          for i in {1..5}
+          do
+            echo "Minute $((i))/5 : Maintien de session (Moteur 2)..."
+            curl -s -X GET "https://firefaucet.win" \
+            -H "Cookie: ${{ secrets.FIRE_COOKIE }}" \
+            -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+            sleep 60
+          done

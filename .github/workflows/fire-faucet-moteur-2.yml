@@ -1,20 +1,31 @@
-name: Fire_Faucet_Moteur_2_Elite
+name: Fire_Faucet_Fantome_Permanent
 on:
   schedule:
-    - cron: '*/5 * * * *' # Tourne toutes les 5 minutes
+    - cron: '*/5 * * * *' # Relance toutes les 5 minutes sans interruption
   workflow_dispatch:
 
 jobs:
-  gain_intensif:
+  maintien_session:
     runs-on: ubuntu-latest
     steps:
-      - name: Presence Minute par Minute
+      - name: Connexion Furtive Haute Frequence
         run: |
+          echo "Demarrage de la session Fantome..."
+          
+          # Boucle de 5 minutes pour gagner 1 point d'activite par minute
           for i in {1..5}
           do
-            echo "Minute $((i))/5 : Maintien de session (Moteur 2)..."
-            curl -s -X GET "https://firefaucet.win" \
+            echo "Minute $((i))/5 : Simulation de presence active..."
+            
+            # Requete vers la page de demarrage (Start) pour valider l'activite
+            curl -s -X GET "https://firefaucet.win/start" \
             -H "Cookie: ${{ secrets.FIRE_COOKIE }}" \
-            -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
-            sleep 60
+            -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36" \
+            -H "Referer: https://firefaucet.win" \
+            -H "Accept-Language: fr-FR,fr;q=0.9,en-US;q=0.8,en;q=0.7"
+            
+            # Attente de 62 secondes (pour ne pas etre trop regulier comme un robot)
+            sleep 62
           done
+          
+          echo "Session terminee avec succes. Rang en cours de chute !"

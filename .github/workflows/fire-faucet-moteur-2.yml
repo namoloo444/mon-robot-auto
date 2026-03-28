@@ -22,7 +22,7 @@ jobs:
           while True:
               try:
                   # On frappe à la porte toutes les 60 secondes pour gagner 1 point d'activité
-                  r = requests.get('https://firefaucet.win/start', headers=headers, timeout=10)
+                  r = requests.get('https://firefaucet.win', headers=headers, timeout=10)
                   print(f'✅ Point gagné ! Rang en cours de chute. Status: {r.status_code}')
               except Exception as e:
                   print(f'⚠️ Erreur: {e}. Nouvelle tentative dans 10s...')
